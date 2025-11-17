@@ -1,0 +1,67 @@
+{% extends "task_base.html" %}
+{% block head %}
+    {{ super() }}
+    <title>Abandoned Archives</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/taskone.css') }}">
+    <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
+    <script src="{{ url_for('taskone.getjavascript') }}"></script>
+{% endblock %}
+{% block content %}
+    <!-- Keep forgetting the secret key to my web application so I'll just put it here since nobody can see it: intro{s0u4rc3_c0D3_br0W51nG}-->
+    <h1>The Abandoned Archives</h1>
+
+    <div class="section">
+        <p>
+            Welcome, wanderer. You have found your way into the digital remnants of forgotten places.
+            Lost websites, deserted servers, decaying structures—both physical and virtual—live here.
+        </p>
+        <p>
+            Throughout the world, countless locations sit untouched. Forgotten research labs,
+            old municipal tunnels, shuttered observatories, empty storefronts whose domains
+            still quietly point to 2008-era landing pages. Some abandoned websites continue
+            to hum faintly on outdated hosting platforms, their creators long gone, their
+            code drifting through the digital void.
+        </p>
+    </div>
+
+    <div class="section">
+        <p>
+            Across the internet, there exist ghost-forums overflowing with broken image links,
+            forgotten tutorials, and communities that once thrived. Old social networks that never
+            reached launch day. Login portals for companies that no longer exist. Each one a relic.
+        </p>
+        <p>
+            Similarly, real-world abandoned structures mark the landscape: old radio towers,
+            decommissioned power plants, underground bunkers sealed off since the 60s.
+            They stand as monuments to systems that once mattered.
+        </p>
+    </div>
+
+    <div class="section">
+        <p>
+            If you wish to begin your exploration, the first step is simple. Hidden pathways are
+            rarely obvious—they often require interaction, intention, or curiosity. Press the button
+            below to initiate the first step in the process of exploring the abandoned.
+        </p>
+        <button id="explore-btn">Begin Exploration</button>
+    </div>
+
+    <script>
+        document.getElementById('explore-btn').addEventListener('click', () => {
+            fetch("{{ url_for('taskone.hidden_data') }}")
+                .then(r => r.json())
+        });
+
+        document.getElementById('explore-btn').addEventListener('click', () => {
+            fetch("{{ url_for('taskone.hidden_data_post') }}", {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+{% endblock %}

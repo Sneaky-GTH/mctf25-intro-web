@@ -1,0 +1,50 @@
+/* flag_header.css */
+
+.flag-header {
+    background-color: #1c1c1e; /* dark gray/black */
+    color: #f1f1f1;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.flag-header .container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flag-header input#flag-input {
+    padding: 8px 12px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2c2c2e;
+    color: #f1f1f1;
+}
+
+.flag-header input#flag-input::placeholder {
+    color: #888;
+}
+
+.flag-header button#submit-flag-btn {
+    padding: 8px 16px;
+    background-color: #366e39; /* bright accent color */
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.flag-header button#submit-flag-btn:hover {
+    background-color: #25662d;
+}
+
+.flag-header span#flag-message {
+    margin-left: 15px;
+    font-weight: bold;
+    min-width: 150px;
+}

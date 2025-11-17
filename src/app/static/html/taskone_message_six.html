@@ -1,0 +1,20 @@
+<img src="/static/img/martinsactually2.png" style="width: 32px; height: auto; margin-right: 8px;"><b>Mārtiņš</b>
+<div style="max-width: 40vw;">
+    <p>Magnificent! We just exploited an <span style="color:aquamarine">exposed endpoint</span>! However, take a look at the source code again - did you notice there's two blocks of code, not just one? Let's take a look at the second one:</p>
+    <code>
+        document.getElementById(&#39;explore-btn&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br>
+            &nbsp;&nbsp;&nbsp;fetch(&quot;/taskone/hidden-datav-post&quot;, {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method: &#39;POST&#39;,<br>
+            &nbsp;&nbsp;&nbsp;)<br>
+            &nbsp;&nbsp;&nbsp;.then(response =&gt; response.json())<br>
+            &nbsp;&nbsp;&nbsp;.then(data =&gt; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(data);<br>
+            &nbsp;&nbsp;&nbsp;})<br>
+            &nbsp;&nbsp;&nbsp;.catch(error =&gt; console.error(&#39;Error:&#39;, error));<br>
+        });
+    </code>
+    <p>This does pretty much the exact same thing as before, but with a major difference - notice the <span style="color: gray;">method: "POST"</span>.
+        When we previously visited <span style="color: gray;">/taskone/hidden-data</span>, we did that using the <span style="color: gray;">GET</span>, which, in simple terms (in reality, it's a bit more complicated...), is like visiting that website directly via the browser.</p>
+    <p><span style="color: gray;">POST</span>, on the other hand, is more like sending only specific data back and forth without visiting the whole website. To see what I mean, try visitting <span style="color: gray;">/taskone/hidden-data-post</span>!</p>
+    <p><span style="color:lightgreen">Close this poup to proceed!</span> (after visitting <span style="color: gray;">/taskone/hidden-data-post</span>, of course...)</p>
+</div>

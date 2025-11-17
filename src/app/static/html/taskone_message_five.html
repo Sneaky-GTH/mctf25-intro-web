@@ -1,0 +1,24 @@
+<img src="/static/img/martinsactually2.png" style="width: 32px; height: auto; margin-right: 8px;"><b>Mārtiņš</b>
+<div style="max-width: 60vw;">
+    <p>Well... that didn't do much. Remember what we just discussed? Let's try checking the source code for what exactly this button does.</p>
+    <p style="color: gray; font-size: 8x"><em>I added it here for your convenience, though I recommend finding it in the original source code!</em></p>
+    <code>
+        &lt;script&gt;<br>
+        document.getElementById(&#39;explore-btn&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br>
+            fetch(&quot;/taskone/hidden-data&quot;)<br>
+                .then(r =&gt; r.json())<br>
+        });
+    </code>
+    <p>Let's take it bit by bit:</p>
+     <ul>
+        <li>The &lt;script&gt; means that we're no longer working with HTML (think of it as no longer working with text) but with JavaScript (a programming language)</li>
+        <li>It finds an element which has the id "explore-btn" (try finding it in the source code!) and executes code whenever it is clicked.</li>
+        <li>When clicked, it executes <span style="color: gray;">fetch(&quot;/taskone/hidden-data&quot;)</span> and returns data.</li>
+    </ul> 
+
+    <p><span style="color: gray;">fetch()</span> is a javascript function that basically says "get the contents of this website". If you put in, for instance,
+    fetch(&quot;google.com&quot;), it would try and "fetch" a resource from google.com, though google probably wouldn't return anything.
+    In this case, it seems to be fetching "/taskone/hidden-data" - notice how it doesn't include a hostname. This means it'll default to the current hostname. The hostname can be seen at the top of the browser - in this case, that would be the IP address (something like "172.12.0.4", though it could also be a domain - think "google.com".</p>
+    <p>So, whenever we click the button, our browser effectively visits <span style="color: gray;">http://172.12.0.2/taskone/hidden-data</span> (the IP address might be different in your case), receives data from it, and.... doesn't do anything. Now - what if we were to visit the website ourselves?</p>
+    <p style="color:lightgreen">Visit /taskone/hidden-data and submit the flag to proceed!</p>
+</div>
