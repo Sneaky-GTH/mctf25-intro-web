@@ -1,0 +1,70 @@
+{% extends "task_base.html" %}
+{% block head %}
+    {{ super() }}
+    <title>CTF Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tasktwo.css') }}">
+    <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
+    <script src="{{ url_for('tasktwo.getjavascript') }}"></script>
+{% endblock %}
+{% block content %}
+
+<h1>Martins-CTF Gift Shop</h1>
+
+{% if error %}
+<div class="errorBox">
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+</div>
+{% endif %}
+
+<div class="container">
+    <!-- Left: Inventory -->
+    <div class="left">
+        <h2>Your Items</h2>
+        <ul id="inventoryList">
+            {% for item, amount in inventory.items() %}
+            <li>{{ item }} × {{ amount }}</li>
+            {% else %}
+            <li>No items purchased yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Right: Products -->
+    <div class="right">
+        <h2>Products</h2>
+
+        <div class="product">
+            Hat — $5
+            <button onclick="buy('hat', 5)">Buy</button>
+        </div>
+
+        <div class="product">
+            Sword — $12
+            <button onclick="buy('sword', 12)">Buy</button>
+        </div>
+
+        <div class="product">
+            Potion — $7
+            <button onclick="buy('potion', 7)">Buy</button>
+        </div>
+
+        <div class="product">
+            Bread — $2
+            <button onclick="buy('bread', 2)">Buy</button>
+        </div>
+    </div>
+</div>
+
+<div class="balanceBox">
+    <p>Your Money: <strong>${{ balance }}</strong></p>
+</div>
+
+<div class="center"><a href="{{ url_for('tasktwo.flag') }}"><button class="vip">Enter the VIP Zone</button></a></div>
+
+<script>
+    function buy(product, price) {
+        window.location = "{{ url_for('tasktwo.buy') }}" + `?product=${product}&price=${price}`;
+    }
+</script>
+
+{% endblock %}

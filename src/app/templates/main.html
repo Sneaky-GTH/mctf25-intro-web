@@ -16,21 +16,21 @@
       <div class="screen">
         <div class="desktop">
           <div class="funnyrow">
-            <a href="/taskone" class="icon">
+            <a href="{{ url_for('taskone.index') }}" class="icon">
               <img src="{{ url_for('static', filename='img/html_icon.png') }}" alt="Task 1">
               <span>Task_1.html</span>
             </a>
           </div>
           <div class="taskrow">
-            <a href="/taskone" class="icon">
+            <a href="{{ url_for('taskone.index') }}" class="icon">
               <img src="{{ url_for('static', filename='img/html_icon.png') }}" alt="Task 1">
               <span>Task_1.html</span>
             </a>
-            <a href="" class="icon">
+            <a href="{{ url_for('tasktwo.index') }}" class="icon">
               <img src="{{ url_for('static', filename='img/html_icon.png') }}" alt="Task 2">
               <span>Task_2.html</span>
             </a>
-            <a href="" class="icon">
+            <a href="{{ url_for('taskthree.index') }}" class="icon">
               <img src="{{ url_for('static', filename='img/html_icon.png') }}" alt="Task 3">
               <span>Task_3.html</span>
             </a>

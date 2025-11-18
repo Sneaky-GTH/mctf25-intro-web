@@ -1,0 +1,132 @@
+/* GENERAL PAGE STYLE */
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f3d28, #1e5c40);
+    color: #f5f5e9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.4em;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+
+/* CONTAINER LAYOUT */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/* LEFT + RIGHT BOXES */
+.left, .right {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #174a32, #1f6b49);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.left h2, .right h2 {
+    margin-top: 0;
+    font-size: 1.6em;
+    color: #ffe9a6;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+
+/* PRODUCT ITEMS */
+.product {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    backdrop-filter: blur(3px);
+    transition: background 0.25s, transform 0.15s;
+}
+
+.product:hover {
+    background: rgba(255, 255, 255, 0.10);
+    transform: translateY(-2px);
+}
+
+
+/* BUY BUTTON */
+.product button, .vip {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #d4a21f, #e8c764);
+    color: #2d2500;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    transition: transform 0.15s, filter 0.2s;
+}
+
+.product button:hover, .vip {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+.product button:active, .vip {
+    transform: translateY(1px);
+}
+
+ .center {
+  display: grid;
+  place-items: center;
+  height: 10vh;
+}
+
+
+/* INVENTORY LIST */
+#inventoryList li {
+    margin: 8px 0;
+    padding: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    list-style-type: none;
+}
+
+
+/* BALANCE BOX */
+.balanceBox {
+    margin: 30px auto 0 auto;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #215f43, #3a805c);
+    width: fit-content;
+    border-radius: 14px;
+
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    color: #ffeebd;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+
+/* ERROR MESSAGE BOX */
+.errorBox {
+    margin: 0 auto 20px auto;
+    padding: 12px 20px;
+    width: fit-content;
+
+    background: linear-gradient(135deg, #7a1a1a, #b42d2d);
+    color: #fff2f2;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    font-weight: bold;
+    text-align: center;
+}

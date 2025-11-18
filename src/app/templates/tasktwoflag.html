@@ -1,0 +1,17 @@
+{% extends "task_base.html" %}
+{% block head %}
+    <title>CTF Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tasktwoflag.css') }}">
+    <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
+    <script src="{{ url_for('tasktwo.getjavascript') }}"></script>
+{% endblock %}
+{% block content %}
+
+    <div class="vip-container">
+        <h1>💎 VIP Lounge 💎</h1>
+        <p>Welcome, distinguished customer. Only the elite with enough credits can access this area.</p>
+        <div class="flag">{{ flag }}</div>
+        <p class="vip-message">Keep it secret, keep it safe.</p>
+    </div>
+
+{% endblock %}
