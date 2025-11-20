@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const data = await response.json();
           progress = data.progress;
 
-          console.log(progressmap.get(progress))
           if (progressmap.get(progress) == false) {
             switch(progress) {
               case 1:
@@ -70,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           }
 
-          console.log("Progress:", progress);
       } catch (err) {
           console.error("Error checking progress:", err);
       }
@@ -83,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
   checkProgress();
 
   document.addEventListener("ripplePopup:close", e => {
-    console.log("Popup closed:", e.detail.messageId);
     switch(e.detail.messageId){
       case "1":
         fetch("{{ url_for('static', filename='html/taskone_message_two.html') }}")

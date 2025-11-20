@@ -1,0 +1,28 @@
+{% extends "task_base.html" %}
+{% block head %}
+    {{ super() }}
+    <title>{{ essay.title }} - Essay Proofreading Service</title>
+    <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
+    <script src="{{ url_for('taskthree.getjavascript') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/taskthree.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="essaycontainer">
+        <h1>{{ essay.title }}</h1>
+        <p class="timestamp">Submitted on: {{ essay.timestamp }}</p>
+        
+        <div class="essay-content">
+            {{ essay.content|safe }}
+        </div>
+        
+        <div class="status">
+            {% if essay.proofread %}
+                <p class="proofread-status">✓ Proofread completed</p>
+            {% else %}
+                <p class="proofread-status">⏳ Waiting for proofreading...</p>
+            {% endif %}
+        </div>
+        
+        <a href="{{ url_for('taskthree.index') }}" class="back-link">← Submit another essay</a>
+    </div>
+{% endblock %}

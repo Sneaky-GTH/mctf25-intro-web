@@ -102,9 +102,9 @@ def reset():
 # -------------------------
 # Serve JS
 # -------------------------
-@tasktwopost_bp.route("/js/tasktwo.js")
+@tasktwopost_bp.route("/js/tasktwopost.js")
 def getjavascript():
-    return Response(render_template("js/tasktwo.js"), mimetype='application/javascript')
+    return Response(render_template("js/tasktwopost.js"), mimetype='application/javascript')
 
 # -------------------------
 # Serve flag
@@ -112,7 +112,7 @@ def getjavascript():
 @tasktwopost_bp.route("/flag")
 def flag():
     user = init_user()
-    if user["balance"] < price:
+    if user["balance"] < 50000:
         user["error"] = "Need 50000$ to enter the ultra special VIP zone!"
         save_user(user)
         return redirect(url_for("tasktwopost.index"))

@@ -7,7 +7,10 @@ FLAGS = [
     "intro{f1r5t_fL4g!}",
     "intro{s0u4rc3_c0D3_br0W51nG}",
     "intro{b451c_n3TW0rK1nG}",
-    "intro{n3TW0rK1nG_l1k3_A_b055}"
+    "intro{n3TW0rK1nG_l1k3_A_b055}",
+    "intro{b4s1c_r3qUE5t_f0rG3Ry}",
+    "intro{p05t_r3qUE5t_f0rG3Ry}",
+    "intro{b451C_XSS}"
     ]
 
 @main_bp.route("/")
@@ -48,3 +51,7 @@ def submit_flag():
 def get_progress():
     return jsonify({"progress": session.get("progress", 1)})
 
+@main_bp.route('/debugprogress/<int:progress>')
+def debug(progress):
+    session["progress"] = progress
+    return (render_template("main.html"))

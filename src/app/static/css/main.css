@@ -61,7 +61,7 @@ header {
 }
 
 .monitor {
-  margin-top: 10%;
+  margin-top: 0;
   display: flex;
   background: url("../img/monitor2.png") center/cover no-repeat;
   padding: 1%;
@@ -163,3 +163,8 @@ header {
   background: linear-gradient(to top, #1f9fd1, #1a93b8);
 }
 
+.infotext {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #5675ac;
+}

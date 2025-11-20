@@ -1,0 +1,18 @@
+<img src="/static/img/martinsactually2.png" style="width: 32px; height: auto; margin-right: 8px;"><b>Mārtiņš</b>
+<div style="min-width: 70vw;">
+    <p>As before, take a look at the top of the requests - there should be a request with the <span style="color: gray;">POST</span> method that is sending a request to <span style="color: gray;">buy</span>, though depending on your chosen product it may differ a bit.</p>
+    <p>Did you notice that it no longer includes data in the "file" section <span style="color: gray;">(the "?product=hat&price=5" part)</span>? That's because using <span style="color: gray;">POST</span>, the data is transmitted a bit differently!</p>
+    <p>Click on the request, look over to the newly-opened box on your right and navigate to the <span style="color: gray;">Request</span> section. This is where the data that you send is shown - instead of being a part of the "address" or "link", it's instead part of the request itself!</p>
+    <p>However, we can still use the exact same exploit we did previously, just with a different method! Try right clicking on the request, head to the <span style="color: gray;">Copy Value</span> option and select <span style="color: gray;">Copy as cURL</span>.
+        Next, open a terminal of your choice and paste in the content (typically Ctrl+Shift+V if you're using a Linux terminal). It should look something like this:</p>
+    <code>
+    curl 'http://172.12.0.5/tasktwopost/buy'<br>
+    -X POST<br>
+    -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0'<br>
+    <span style="color: gray;"><em>A bunch of lines starting with -H that are not important to us right now...</em></span><br>
+    -H 'Cache-Control: no-cache'<br>
+    --data-raw 'product=hat&price=5'<br>
+    </code>
+    <p>See that last line? That's the data that's being sent! Simply change the price and use the same exploit we used previously. After entering the command, our terminal will then send a POST request to the given address and data - after sending it, all that is left is to refresh the page.</p>
+    <p><span style="color:lightgreen">Obtain enough money to visit the VIP zone to proceed!</span></p>
+</div>

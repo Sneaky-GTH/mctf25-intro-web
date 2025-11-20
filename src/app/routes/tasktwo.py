@@ -45,6 +45,13 @@ def save_user(user):
     store[get_user_id()] = user
     save_store(store)
 
+
+
+@tasktwo_bp.before_request
+def checkaccess():
+    if session.get("progress", 1) < 4:
+        return redirect(url_for("main.index"))
+
 # -------------------------
 # Index - display shop
 # -------------------------

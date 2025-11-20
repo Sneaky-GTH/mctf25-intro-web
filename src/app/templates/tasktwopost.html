@@ -4,11 +4,11 @@
     <title>CTF Shop</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tasktwo.css') }}">
     <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
-    <script src="{{ url_for('tasktwo.getjavascript') }}"></script>
+    <script src="{{ url_for('tasktwopost.getjavascript') }}"></script>
 {% endblock %}
 {% block content %}
 
-<h1>Martins-CTF Gift Shop</h1>
+<h1>Martins-CTF Gift Shop (but slightly different...)</h1>
 
 {% if error %}
 <div class="errorBox">
@@ -35,22 +35,22 @@
 
         <div class="product">
             Hat — $5
-            <button onclick="buy('hat', 5)">Buy</button>
+            <button onclick="buy('hat', 5)" class="buybutton">Buy</button>
         </div>
 
         <div class="product">
             Sword — $12
-            <button onclick="buy('sword', 12)">Buy</button>
+            <button onclick="buy('sword', 12)" class="buybutton">Buy</button>
         </div>
 
         <div class="product">
             Potion — $7
-            <button onclick="buy('potion', 7)">Buy</button>
+            <button onclick="buy('potion', 7)" class="buybutton">Buy</button>
         </div>
 
         <div class="product">
             Bread — $2
-            <button onclick="buy('bread', 2)">Buy</button>
+            <button onclick="buy('bread', 2)" class="buybutton">Buy</button>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
     <p>Your Money: <strong>${{ balance }}</strong></p>
 </div>
 
-<div class="center"><a href="{{ url_for('tasktwopost.flag') }}"><button class="vip">Enter the VIP Zone</button></a></div>
+<div class="center"><a href="{{ url_for('tasktwopost.flag') }}"><button class="vip" id="vip-btn">Enter the VIP Zone</button></a></div>
 
 <script>
     function buy(product, price) {

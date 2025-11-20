@@ -1,0 +1,34 @@
+{% extends "task_base.html" %}
+{% block head %}
+    {{ super() }}
+    <title>Kibi's Proofreading Service</title>
+    <script src="{{ url_for('static', filename='js/helpmessage.js') }}"></script> 
+    <script src="{{ url_for('taskthree.getjavascript') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/taskthree.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="essaycontainer">
+        <h1>Kibi's Proofreading Service</h1>
+        <p>Submit your essay below and the one and only Kibi will proofread it, to make sure it's void of any mistakes!</p>
+        
+        <form action="{{ url_for('taskthree.submit_essay') }}" method="post">
+            <div class="form-group">
+                <label for="title">Essay Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter essay title" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <div>Essay Content:</div>
+                <br>
+                <textarea id="content" name="content" rows="15" placeholder="Paste your essay here..." required></textarea>
+            </div>
+            
+            <button type="submit" id="submit-btn">Submit for Proofreading</button>
+        </form>
+        
+        <div class="notice">
+            <h3>Important Notice:</h3>
+            <p>Kibi cannot be held responsible if there are still mistakes after proofreading! Kibi may be the best but still not infallible!!</p>
+        </div>
+    </div>
+{% endblock %}

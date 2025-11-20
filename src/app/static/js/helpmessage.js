@@ -194,6 +194,12 @@ class RipplePopup {
       }));
     });
 
+    popup.addEventListener('click', () => {
+      document.dispatchEvent(new CustomEvent("ripplePopup:open", {
+        detail: { messageId: msgId }
+      }));
+    });
+
     backdrop.addEventListener('click',(e)=>{e.stopPropagation(); e.preventDefault();});
 
     popup.innerHTML=html||''; popup.appendChild(closeBtn); backdrop.appendChild(popup); document.body.appendChild(backdrop);

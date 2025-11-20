@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   progressmap = new Map();
   helpmap = new Map();
 
- for (let i = 0; i <= 5; i++) {
-   progressmap.set(i, false);
- }
+  progressmap.set(8, false);
 
   async function checkProgress() {
   while (true) {
@@ -19,46 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const data = await response.json();
           progress = data.progress;
 
-          console.log(progressmap.get(progress))
           if (progressmap.get(progress) == false) {
             switch(progress) {
-              case 1:
-                fetch("{{ url_for('static', filename='html/taskone_message_one.html') }}")
+              case 8:
+                fetch("{{ url_for('static', filename='html/taskthree_message_six.html') }}")
                 .then(res => res.text())
                 .then(html => {
-                  rp.trigger("30vw", 400, "1", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-                })
-                .catch(err => console.error("Failed to load HTML:", err));
-                break;
-              case 2:
-                fetch("{{ url_for('static', filename='html/taskone_message_three.html') }}")
-                .then(res => res.text())
-                .then(html => {
-                  rp.trigger("70vw", 500, "3", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-                })
-                .catch(err => console.error("Failed to load HTML:", err));
-                break;
-              case 3:
-                fetch("{{ url_for('static', filename='html/taskone_message_four.html') }}")
-                .then(res => res.text())
-                .then(html => {
-                  rp.trigger("45vw", 650, "4", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-                })
-                .catch(err => console.error("Failed to load HTML:", err));
-                break;
-              case 4:
-                fetch("{{ url_for('static', filename='html/taskone_message_six.html') }}")
-                .then(res => res.text())
-                .then(html => {
-                  rp.trigger("45vw", 650, "6", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-                })
-                .catch(err => console.error("Failed to load HTML:", err));
-                break;
-              case 5:
-                fetch("{{ url_for('static', filename='html/taskone_message_nine.html') }}")
-                .then(res => res.text())
-                .then(html => {
-                  rp.trigger("45vw", 650, "6", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+                  rp.trigger("60vw", 300, "1", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
                 })
                 .catch(err => console.error("Failed to load HTML:", err));
                 break;
@@ -70,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           }
 
-          console.log("Progress:", progress);
       } catch (err) {
           console.error("Error checking progress:", err);
       }
@@ -83,56 +47,84 @@ document.addEventListener('DOMContentLoaded', () => {
   checkProgress();
 
   document.addEventListener("ripplePopup:close", e => {
-    console.log("Popup closed:", e.detail.messageId);
     switch(e.detail.messageId){
-      case "1":
-        fetch("{{ url_for('static', filename='html/taskone_message_two.html') }}")
-          .then(res => res.text())
-          .then(html => {
-            rp.trigger("57vw", 35, "2", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-          })
-          .catch(err => console.error("Failed to load HTML:", err));
+      case "3_1":
+        sessionStorage.setItem('3_1', "false");
         break;
-      case "4":
-        helpmap.set("4", true);
+      case "3_2":
+        sessionStorage.setItem('3_2', "false");
+        sessionStorage.setItem('3_3', "true");
         break;
-      case "6":
-        fetch("{{ url_for('static', filename='html/taskone_message_seven.html') }}")
-        .then(res => res.text())
-        .then(html => {
-          rp.trigger("60vw", 300, "7", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-        })
-        .catch(err => console.error("Failed to load HTML:", err));
+      case "3_3":
+        console.log("test");
+        sessionStorage.setItem('3_3', "false");
         break;
-      case "7":
-        helpmap.set("8", true);
+      case "3_4":
+        sessionStorage.setItem('3_4', "false");
+        sessionStorage.setItem('3_5', "true");
+        break;
+      case "3_4":
+        sessionStorage.setItem('3_5', "false");
         break;
       default:
         break;
     }
-
   });
 
+  if (window.location.pathname.includes("/essay/") == false) {
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      if (sessionStorage.getItem("3_1") == "false" && sessionStorage.getItem("3_2") != "false") {
+        sessionStorage.setItem('3_2', "true");
+      }
+      if (sessionStorage.getItem("3_3") == "false" && sessionStorage.getItem("3_4") != "false") {
+        sessionStorage.setItem('3_4', "true");
+      }
+    });
+  }
 
-  document.getElementById('explore-btn').addEventListener('click', () => {
-    if (helpmap.get("4") == true) {
-      fetch("{{ url_for('static', filename='html/taskone_message_five.html') }}")
-          .then(res => res.text())
-          .then(html => {
-            rp.trigger("50vw", 450, "5", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-          })
-          .catch(err => console.error("Failed to load HTML:", err));
-        helpmap.set("4", false);
-    }
-    if (helpmap.get("8") == true) {
-        fetch("{{ url_for('static', filename='html/taskone_message_eight.html') }}")
-          .then(res => res.text())
-          .then(html => {
-            rp.trigger("60vw", 300, "8", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
-          })
-          .catch(err => console.error("Failed to load HTML:", err));
-        helpmap.set("8", false);
-    }
-  });
+  if (sessionStorage.getItem("3_1") != "false") {
+    fetch("{{ url_for('static', filename='html/taskthree_message_one.html') }}")
+      .then(res => res.text())
+      .then(html => {
+        rp.trigger("50vw", 500, "3_1", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+      })
+      .catch(err => console.error("Failed to load HTML:", err));
+  }
+
+  if (sessionStorage.getItem("3_2") == "true" && window.location.pathname.includes("/essay/") == true) {
+    fetch("{{ url_for('static', filename='html/taskthree_message_two.html') }}")
+      .then(res => res.text())
+      .then(html => {
+        rp.trigger("60vw", 300, "3_2", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+      })
+      .catch(err => console.error("Failed to load HTML:", err));
+  }
+
+  if (sessionStorage.getItem("3_3") == "true" && window.location.pathname.includes("/essay/") == false) {
+    fetch("{{ url_for('static', filename='html/taskthree_message_three.html') }}")
+      .then(res => res.text())
+      .then(html => {
+        rp.trigger("50vw", 500, "3_3", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+      })
+      .catch(err => console.error("Failed to load HTML:", err));
+  }
+
+    if (sessionStorage.getItem("3_4") == "true" && window.location.pathname.includes("/essay/") == true) {
+    fetch("{{ url_for('static', filename='html/taskthree_message_four.html') }}")
+      .then(res => res.text())
+      .then(html => {
+        rp.trigger("60vw", 300, "3_4", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+      })
+      .catch(err => console.error("Failed to load HTML:", err));
+  }
+
+  if (sessionStorage.getItem("3_5") == "true" && window.location.pathname.includes("/essay/") == false) {
+    fetch("{{ url_for('static', filename='html/taskthree_message_five.html') }}")
+      .then(res => res.text())
+      .then(html => {
+        rp.trigger("50vw", 500, "3_5", html, "{{ url_for('static', filename='img/martinsactually.png') }}");
+      })
+      .catch(err => console.error("Failed to load HTML:", err));
+  }
 
 });

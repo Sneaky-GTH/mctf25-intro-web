@@ -1,0 +1,11 @@
+<img src="/static/img/martinsactually2.png" style="width: 32px; height: auto; margin-right: 8px;"><b>Mārtiņš</b>
+<div style="max-width: 30vw;">
+    <p>Since the server is taking our input and turning it into pages, we should test this for any possible exploits or venues of attack. Typically this is done by submitting various strings that could be malicious and seeing what happens.</p>
+    <p>Let's start with something simple - javascript! If we can submit javascript code that executes, it might lead us to getting the flag itself. A very primitive way of testing that would be to submit the following:</p>
+    <code>
+    &lt;script&gt;alert(1)&lt;/script&gt;
+    </code>
+    <p>That code will execute the <span style="color: gray;">alert(1)</span> command as soon as it is loaded, which will create a pop-up alert that contains the message "1". This means that we can submit that as the content of the essay,
+    navigate to where the essay is displayed, and if we receive a javascript alert, then that means our submitted javascript will execute to anyone who visits it!</p>
+    <p><span style="color:lightgreen">Submit an essay with the aforementioned code as the content to proceed.</span></p>
+</div>
