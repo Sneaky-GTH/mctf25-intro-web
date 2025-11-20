@@ -18,7 +18,7 @@
 
     <p><span style="color: gray;">fetch()</span> is a javascript function that basically says "get the contents of this website". If you put in, for instance,
     fetch(&quot;google.com&quot;), it would try and "fetch" a resource from google.com, though google probably wouldn't return anything.
-    In this case, it seems to be fetching "/taskone/hidden-data" - notice how it doesn't include a hostname. This means it'll default to the current hostname. The hostname can be seen at the top of the browser - in this case, that would be the IP address (something like "172.12.0.4", though it could also be a domain - think "google.com".</p>
+    In this case, it seems to be fetching "/taskone/hidden-data" - notice how it doesn't include a hostname. This means it'll default to the current hostname. The hostname can be seen at the top of the browser - in this case, that would be the IP address (something like "172.12.0.4", though it could also be a domain - think "google.com").</p>
     <p>So, whenever we click the button, our browser effectively visits <span style="color: gray;">http://172.12.0.2/taskone/hidden-data</span> (the IP address might be different in your case), receives data from it, and.... doesn't do anything. Now - what if we were to visit the website ourselves?</p>
     <p style="color:lightgreen">Visit /taskone/hidden-data and submit the flag to proceed!</p>
 </div>

@@ -30,8 +30,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port
-EXPOSE 5000
+EXPOSE 80
 
 # Use Gunicorn for production (more robust than flask run)
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80", "run:app"]
 
